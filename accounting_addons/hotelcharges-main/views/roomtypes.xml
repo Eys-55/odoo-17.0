@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="view_roomtypes_list">
+        <field name="name">hotel.roomtypes.tree</field>
+        <field name="model">hotel.roomtypes</field>
+        <field name="arch" type="xml">
+            <tree string="Room Types">
+                <field name="name"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_roomtypes_form">
+        <field name="name">hotel.roomtypes.form</field>
+        <field name="model">hotel.roomtypes</field>
+        <field name="arch" type="xml">
+            <form string="Room Type">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                    </group>
+                    <notebook>
+                        <page string="Daily Charges">
+                            <group>
+                                <label for="description" string="Daily charges setup goes here."/>
+                            </group>
+                        </page>
+                        <page string="Images">
+                            <group>
+                                 <field name="room_image" widget="image" class="oe_avatar"/>
+                                 <field name="bathroom_image" widget="image" class="oe_avatar"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_hotel_roomtypes">
+        <field name="name">Room Types</field>
+        <field name="res_model">hotel.roomtypes</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new room type
+            </p><p>
+                Define different types of rooms available in the hotel (e.g., Single, Double, Suite).
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+        id="hotel_menu_roomtypes"
+        name="Room Types"
+        parent="hotel_menu_masterlists"
+        action="action_hotel_roomtypes"
+        sequence="10"/>
+
+</odoo>

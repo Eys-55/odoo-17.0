@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="view_rooms_list">
+        <field name="name">hotel.rooms.tree</field>
+        <field name="model">hotel.rooms</field>
+        <field name="arch" type="xml">
+            <tree string="Hotel Rooms">
+                <field name="name"/>
+                <field name="description"/>
+                </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_rooms_form">
+        <field name="name">hotel.rooms.form</field>
+        <field name="model">hotel.rooms</field>
+        <field name="arch" type="xml">
+            <form string="Hotel Room">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                        </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_hotel_rooms">
+        <field name="name">Hotel Rooms</field>
+        <field name="res_model">hotel.rooms</field>
+        <field name="view_mode">tree,form</field>
+         <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new hotel room
+            </p><p>
+                Register the individual rooms available in the hotel.
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+        id="hotel_menu_rooms"
+        name="Hotel Rooms"
+        parent="hotel_menu_masterlists"
+        action="action_hotel_rooms"
+        sequence="20"/>
+
+</odoo>

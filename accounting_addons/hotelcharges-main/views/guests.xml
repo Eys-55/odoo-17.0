@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="view_guests_list">
+        <field name="name">hotel.guests.tree</field>
+        <field name="model">hotel.guests</field>
+        <field name="arch" type="xml">
+            <tree string="Guests">
+                <field name="lastname"/>
+                <field name="firstname"/>
+                <field name="middlename"/>
+                <field name="contactno"/>
+                <field name="email"/>
+                <field name="address_city"/>
+                <field name="address_province"/>
+                </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_guests_form">
+        <field name="name">hotel.guests.form</field>
+        <field name="model">hotel.guests</field>
+        <field name="arch" type="xml">
+            <form string="Guest Information">
+                <sheet>
+                    <field name="photo" widget="image" class="oe_avatar"/>
+                     <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group> <group>
+                            <field name="lastname"/>
+                            <field name="firstname"/>
+                            <field name="middlename"/>
+                        </group>
+                        <group>
+                             <field name="contactno"/>
+                             <field name="email"/>
+                        </group>
+                    </group>
+                    <group string="Address"> <group>
+                            <field name="address_streetno"/>
+                            <field name="address_area"/>
+                       </group>
+                       <group>
+                            <field name="address_city"/>
+                            <field name="address_province"/>
+                            <field name="zipcode"/>
+                       </group>
+                    </group>
+                    <group> <group>
+                            <field name="gender"/>
+                            <field name="birthdate"/>
+                            <field name="age"/> </group>
+                        <group>
+                            </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_hotel_guests">
+        <field name="name">Guests</field>
+        <field name="res_model">hotel.guests</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            Register a new guest
+          </p><p>
+            Manage guest information including contact details and personal data.
+          </p>
+        </field>
+    </record>
+
+    <menuitem
+        id="hotel_menu_guests"
+        name="Guests"
+        parent="hotel_menu_guest_registration"
+        action="action_hotel_guests"
+        sequence="10"/>
+
+</odoo>
