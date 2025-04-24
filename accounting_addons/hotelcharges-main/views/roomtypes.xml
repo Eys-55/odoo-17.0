@@ -23,10 +23,14 @@
                         <field name="description"/>
                     </group>
                     <notebook>
-                        <page string="Daily Charges">
-                            <group>
-                                <label for="description" string="Daily charges setup goes here."/>
-                            </group>
+                        <page string="Rooms"> <!-- Updated page title -->
+                            <!-- Added readonly tree view for rooms -->
+                            <field name="room_ids" readonly="1">
+                                <tree string="Rooms">
+                                    <field name="name"/>
+                                    <field name="description"/>
+                                </tree>
+                            </field>
                         </page>
                         <page string="Images">
                             <group>

@@ -8,7 +8,7 @@ from dateutil.relativedelta import relativedelta # Required for age calculation
 class Guests(models.Model):
     _name = 'hotel.guests'
     _description = 'Hotel Guests Information'
-    _order = 'lastname, firstname' # Default sorting
+    _order = 'lastname,firstname,middlename' # Updated order
 
     # Direct Fields
     lastname = fields.Char("Lastname", required=True)

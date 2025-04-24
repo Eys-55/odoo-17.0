@@ -6,14 +6,13 @@
         <field name="model">hotel.guests</field>
         <field name="arch" type="xml">
             <tree string="Guests">
-                <field name="lastname"/>
-                <field name="firstname"/>
-                <field name="middlename"/>
+                <!-- Replaced lastname, firstname, middlename with name -->
+                <field name="name"/>
                 <field name="contactno"/>
                 <field name="email"/>
                 <field name="address_city"/>
                 <field name="address_province"/>
-                </tree>
+            </tree>
         </field>
     </record>
 

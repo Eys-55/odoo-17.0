@@ -9,9 +9,8 @@ class RoomTypes(models.Model):
 
     name = fields.Char("Room Type", required=True)
     description = fields.Char("Room Type Description")
-    # Fields added for the notebook step later
     room_image = fields.Image("Room Photo", max_width=1024, max_height=1024)
     bathroom_image = fields.Image("Bathroom Photo", max_width=1024, max_height=1024)
 
-    # Note: Fields for 'Daily Charges' page would be added here later,
-    # possibly as a One2many relationship to a charges line model if needed.
+    # Added One2many field for rooms
+    room_ids = fields.One2many('hotel.rooms', 'roomtype_id', string='Rooms')
