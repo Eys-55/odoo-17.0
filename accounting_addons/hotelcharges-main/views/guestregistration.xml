@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_guestregistration_tree" model="ir.ui.view">
+        <field name="name">hotel.guestregistration.tree</field>
+        <field name="model">hotel.guestregistration</field>
+        <field name="arch" type="xml">
+            <tree string="Guest Registrations" decoration-info="state == 'draft'" decoration-muted="state == 'cancelled'" decoration-bf="state == 'reserved'" decoration-success="state == 'checked_in'">
+                <field name="name"/>
+                <field name="guest_id"/>
+                <field name="roomtype_id"/> 
+                <field name="room_id"/>
+                <field name="date_checkin_planned"/>
+                <field name="date_checkout_planned"/>
+                <field name="duration_planned"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_guestregistration_form" model="ir.ui.view">
+        <field name="name">hotel.guestregistration.form</field>
+        <field name="model">hotel.guestregistration</field>
+        <field name="arch" type="xml">
+            <form string="Guest Registration">
+                <header>
+                    <button name="action_reserve" type="object" string="Reserve" class="oe_highlight" invisible="state != 'draft'"/>
+                    <button name="action_checkin" type="object" string="Check In" class="oe_highlight" invisible="state != 'reserved'"/>
+                    <button name="action_checkout" type="object" string="Check Out" class="oe_highlight" invisible="state != 'checked_in'"/>
+                    <button name="action_cancel" type="object" string="Cancel" invisible="state in ('checked_out', 'cancelled')" confirm="Are you sure you want to cancel this registration?"/>
+                    <button name="action_reset_to_draft" type="object" string="Reset to Draft" invisible="state not in ('cancelled','checked_out')" confirm="Are you sure you want to reset this registration to draft?"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,reserved,checked_in,checked_out"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Guest &amp; Room Details">
+                            <field name="guest_id" options="{'no_create': True, 'no_create_edit': True}" readonly="state != 'draft'"/>
+                            <field name="filter_roomtype_id" options="{'no_create': True, 'no_create_edit': True}" readonly="state != 'draft'"/>
+                             <field name="room_id" options="{'no_create': True, 'no_create_edit': True}" readonly="state != 'draft'" context="{'default_roomtype_id': filter_roomtype_id}"/>
+                            <field name="roomtype_id"/>
+                        </group>
+                        <group string="Stay Duration">
+                            <field name="date_reservation" readonly="state != 'draft'"/>
+                            <field name="date_checkin_planned" readonly="state != 'draft'"/>
+                            <field name="date_checkout_planned" readonly="state != 'draft'"/>
+                            <field name="duration_planned" readonly="1"/>
+                        </group>
+                    </group>
+                    <group string="Actual Stay Dates (Readonly)">
+                        <field name="date_checkin_actual"/>
+                        <field name="date_checkout_actual"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_hotel_guestregistration" model="ir.actions.act_window">
+        <field name="name">Guest Registrations</field>
+        <field name="res_model">hotel.guestregistration</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            Create a new guest registration
+          </p><p>
+            Manage guest reservations, check-ins, and check-outs.
+          </p>
+        </field>
+    </record>
+
+     <menuitem
+        id="hotel_menu_guestregistration_records"
+        name="Registrations"
+        parent="hotel_menu_guest_registration"
+        action="action_hotel_guestregistration"
+        sequence="5"/>
+
+    <record id="seq_hotel_guestregistration" model="ir.sequence">
+        <field name="name">Hotel Guest Registration Sequence</field>
+        <field name="code">hotel.guestregistration</field>
+        <field name="prefix">REG/</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False"/>
+    </record>
+
+</odoo>

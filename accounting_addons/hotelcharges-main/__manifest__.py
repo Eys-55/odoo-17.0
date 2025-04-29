@@ -1,21 +1,25 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "hotel",
+    'name': "Hotel Management", # Your module name
 
-    'summary': "Hotel Management System",
+    'summary': """
+        Manage Hotel Operations including Guests, Rooms, and Registrations""", # Your module summary
 
     'description': """
-        Hotel Guest Registration and Billing System.
-        Manages Room Types, Rooms, Guests, Charges, and potentially Bookings.
+        A comprehensive module to manage various aspects of a hotel including:
+        - Guest Information Management
+        - Room Types and Room Details
+        - Guest Registration and Stay Tracking
+        - Charges Master List
     """,
 
-    'author': "ROYTEK",
-    'website': "https://www.yourcompany.com", # Replace with actual website if available
+    'author': "Your Name/Company", # Your Author Name
+    'website': "https://www.yourwebsite.com", # Your Website
 
     # Categories can be used to filter modules in modules listing
-    # Check https://github.com/odoo/odoo/blob/16.0/odoo/addons/base/data/ir_module_category_data.xml
-    # for the full list (adjust version 16.0 as needed)
-    'category': 'Services/Hotel', # Changed category for better classification
+    # Check https://github.com/odoo/odoo/blob/15.0/odoo/addons/base/data/ir_module_category_data.xml
+    # for the full list
+    'category': 'Services/Hotel',
     'version': '0.1',
 
     # any module necessary for this one to work correctly
@@ -23,21 +27,20 @@
 
     # always loaded
     'data': [
-        # Security first
         'security/ir.model.access.csv',
-        # Then views/data
+        # Add views in logical order (master data first, then transactions)
         'views/mainmenu.xml',
         'views/charges.xml',
-        'views/roomtypes.xml', # Added
-        'views/rooms.xml',     # Added
-        'views/guests.xml',    # Added
+        'views/roomtypes.xml',
+        'views/rooms.xml',
+        'views/guests.xml',
+        'views/guestregistration.xml', # Added Guest Registration View
     ],
     # only loaded in demonstration mode
     'demo': [
-        # 'demo/demo.xml', # You might add demo data later
+        #'demo/demo.xml', # If you have demo data
     ],
     'installable': True,
-    'application': True, # Make it show as an App
+    'application': True, # Make it appear as an Application in Odoo Apps
     'auto_install': False,
-    'license': 'LGPL-3', # Specify a license
 }

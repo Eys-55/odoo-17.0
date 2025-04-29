@@ -8,7 +8,7 @@
             <tree string="Hotel Rooms">
                 <field name="name"/>
                 <field name="description"/>
-                </tree>
+                <field name="roomtype_id"/> </tree>
         </field>
     </record>
 
@@ -21,7 +21,7 @@
                     <group>
                         <field name="name"/>
                         <field name="description"/>
-                        </group>
+                        <field name="roomtype_id"/> </group>
                 </sheet>
             </form>
         </field>
@@ -35,7 +35,7 @@
             <p class="o_view_nocontent_smiling_face">
                 Add a new hotel room
             </p><p>
-                Register the individual rooms available in the hotel.
+                Register the individual rooms available in the hotel and assign their type.
             </p>
         </field>
     </record>
