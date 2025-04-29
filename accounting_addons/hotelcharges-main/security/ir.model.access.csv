@@ -4,3 +4,4 @@ access_hotel_roomtypes,hotel.roomtypes.access,model_hotel_roomtypes,base.group_u
 access_hotel_rooms,hotel.rooms.access,model_hotel_rooms,base.group_user,1,1,1,1
 access_hotel_guests,hotel.guests.access,model_hotel_guests,base.group_user,1,1,1,1
 access_hotel_guestregistration,hotel.guestregistration.access,model_hotel_guestregistration,base.group_user,1,1,1,1
+access_hotel_dailycharges,hotel.dailycharges.access,model_hotel_dailycharges,base.group_user,1,1,1,1
