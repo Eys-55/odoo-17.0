@@ -9,5 +9,5 @@ class Rooms(models.Model):
 
     name = fields.Char("Room No.", required=True)
     description = fields.Char("Room Description")
-    # Added Many2one link to roomtypes
+    # This field already exists in your provided code
     roomtype_id = fields.Many2one('hotel.roomtypes', string='Room Type')
